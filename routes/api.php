@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('warehouses', 'WarehouseController@index');
 Route::get('warehouses/{id}', 'WarehouseController@show');
 Route::post('warehouses', 'WarehouseController@store');
+Route::put('warehouses/{id}', 'WarehouseController@update');
+Route::delete('warehouses/{id}', 'WarehouseController@delete');
+
 //Bike
 Route::get('bikes', 'BikeController@index');
 Route::get('bikes', 'BikeController@filter');

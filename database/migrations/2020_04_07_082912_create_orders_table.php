@@ -19,6 +19,8 @@ class CreateOrdersTable extends Migration
             $table->string('customer_email');
             $table->string('customer_phone');
             $table->string('customer_address');
+            $table->unsignedBigInteger('bike_id')->nullable();
+            $table->foreign('bike_id')->references('id')->on('bikes');
             $table->timestamps();
             });
     }

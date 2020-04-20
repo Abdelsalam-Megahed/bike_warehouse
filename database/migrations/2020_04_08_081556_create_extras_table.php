@@ -15,7 +15,7 @@ class CreateExtrasTable extends Migration
     {
         Schema::create('extras', function (Blueprint $table) {
             $table->id();
-            $table->string('product_name')->unique();
+            $table->string('product_name');
             $table->integer('product_count')->unsigned();
             $table->timestamps();
         });

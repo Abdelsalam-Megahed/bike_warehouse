@@ -1,7 +1,6 @@
 <?php
 
-namespace App;
-
+namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 class Warehouse extends Model
@@ -13,9 +12,7 @@ class Warehouse extends Model
         return $this->hasMany('App/Bike');
     }
 
-
-
     public function extras(){
-        return $this->belongsToMany( 'App\Extra', 'warehouse_extras', 'warehouse_id', 'extra_id' );
+        return $this->belongsToMany( 'App\Models\Extra', 'warehouse_extras', 'warehouse_id', 'extra_id' );
     }
 }

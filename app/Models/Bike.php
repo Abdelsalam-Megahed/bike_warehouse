@@ -1,7 +1,6 @@
 <?php
 
-namespace App;
-
+namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 class Bike extends Model
@@ -11,11 +10,11 @@ class Bike extends Model
 
     public function warehouse()
     {
-        return $this->belongsTo('App\Warehouse');
+        return $this->belongsTo('App\Models\Warehouse');
     }
 
     public function order()
     {
-        return $this->belongsTo('App\Order');
+        return $this->belongsTo('App\Models\Order');
     }
 }

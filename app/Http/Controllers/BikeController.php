@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Bike;
+use App\Models\Bike;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Symfony\Component\HttpFoundation\Response;
 
 class BikeController extends Controller
 {
@@ -16,10 +17,11 @@ class BikeController extends Controller
 
     public function show($id){
         $bike = Bike::find($id);
-        if($bike){
+        if(is_null($bike)){
+            return response()->json(['error' => 'Bike not found'], Response::HTTP_NOT_FOUND);
+        }else
             $bike->order;
-        }
-        return response()->json([$bike]);
+            return response()->json($bike, Response::HTTP_OK);
     }
 
     public function filter(Request $request){
@@ -31,6 +33,14 @@ class BikeController extends Controller
 
         if ($request->has('model')) {
             $bikes = $bikes->where('model', $request->model);
+        }
+
+        if ($request->has('color')) {
+            $bikes = $bikes->where('color', $request->color);
+        }
+
+        if ($request->has('status')) {
+            $bikes = $bikes->where('status', $request->status);
         }
 
         return $bikes->get();

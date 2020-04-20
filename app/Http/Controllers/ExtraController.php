@@ -2,10 +2,10 @@
 
 
 namespace App\Http\Controllers;
-use App\Warehouse;
+use App\Models\Extra;
+
 use Illuminate\Http\Request;
 
-use App\Extra;
 
 
 class ExtraController extends Controller

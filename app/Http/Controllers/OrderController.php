@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Bike;
+use App\Models\Bike;
 use Illuminate\Http\Request;
 
-use App\Order;
+use App\Models\Order;
 
 
 class OrderController extends Controller

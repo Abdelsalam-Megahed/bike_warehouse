@@ -15,7 +15,7 @@ class CreateBikesTable extends Migration
     {
         Schema::create('bikes', function (Blueprint $table) {
             $table->id();
-            $table->enum('model', ['Curt Belt', 'Curt', 'Stout', 'Stellar']);
+            $table->enum('model', ['Curt Belt', 'Curt', 'Stout Green', 'Stellar Red', 'Stellar Blue']);
             $table->string("color")->nullable();
             $table->string('frame_number');
             $table->string('sku_code');
@@ -31,8 +31,8 @@ class CreateBikesTable extends Migration
             $table->unsignedBigInteger('warehouse_id');
             $table->foreign('warehouse_id')->references('id')->on('warehouses');
             //Order foreign key
-            $table->unsignedBigInteger('order_id')->nullable();
-            $table->foreign('order_id')->references('id')->on('orders');
+//            $table->unsignedBigInteger('order_id')->nullable();
+//            $table->foreign('order_id')->references('id')->on('orders');
         });
     }
 
