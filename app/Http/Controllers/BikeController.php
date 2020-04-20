@@ -13,6 +13,9 @@ class BikeController extends Controller
     {
         $bikes = Bike::all();
         return $bikes;
+
+//        $bikes = Bike::with('orders')->get();
+//        return $bikes->orders;
     }
 
     public function show($id){
@@ -49,7 +52,8 @@ class BikeController extends Controller
     public function update(Request $request, $id){
         $bike = Bike::findOrFail($id);
         $bike->update($request->all());
-        return $bike;
+
+        return response()->json($bike, 200);
     }
 
     public function store(Request $request){
@@ -79,7 +83,7 @@ class BikeController extends Controller
             return response()->json(["error" => "Please enter valid data"]);
         }else{
             $bike->save();
-            return response()->json([$bike]);
+            return response()->json($bike, Response::HTTP_CREATED);
         }
     }
 }
