@@ -15,13 +15,14 @@ class CreateBikesTable extends Migration
     {
         Schema::create('bikes', function (Blueprint $table) {
             $table->id();
-            $table->enum('model', ['Curt Belt', 'Curt', 'Stout Green', 'Stellar Red', 'Stellar Blue']);
+            $table->enum('model',
+                ['Curt Belt', 'Curt', 'Stout Green', 'Stout Grey', 'Stellar Red', 'Stellar Blue']);
             $table->string("color")->nullable();
+            $table->string('l_number');
             $table->string('frame_number');
             $table->string('sku_code');
             $table->enum('status', ['Arrived', 'In transit']);
             $table->enum('size', ['L', 'M', 'S']);
-            $table->timestamps();
             //Package parameters
             $table->float('weight');
             $table->integer('length');
@@ -30,9 +31,9 @@ class CreateBikesTable extends Migration
             //WAREHOUSE foreign key
             $table->unsignedBigInteger('warehouse_id');
             $table->foreign('warehouse_id')->references('id')->on('warehouses');
-            //Order foreign key
-//            $table->unsignedBigInteger('order_id')->nullable();
-//            $table->foreign('order_id')->references('id')->on('orders');
+
+            $table->timestamps();
+
         });
     }
 

@@ -53,10 +53,14 @@ class BikeController extends Controller
     }
 
     public function store(Request $request){
+        $l_number = "L-". rand(15,10000);
+        $frame_number = "FRA". rand(15,10000);
+
         $bike = new Bike;
             $bike->model = $request->input('model');
             $bike->color = $request->input('color');
-            $bike->frame_number = $request->input('frame_number');
+            $bike->l_number =  $l_number;
+            $bike->frame_number =  $frame_number;
             $bike->sku_code = $request->input('sku_code');
             $bike->status = $request->input('status');
             $bike->size = $request->input('size');
@@ -68,7 +72,7 @@ class BikeController extends Controller
 
         $validator = Validator::make($request->all(), [
             'warehouse_id', 'model', 'size', 'weight', 'status', 'length',
-            'height', 'width', 'frame_number', 'sku_code' => 'required'
+            'height', 'width', 'sku_code' => 'required'
         ]);
 
         if ($validator->fails()) {
