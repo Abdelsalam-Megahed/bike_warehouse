@@ -22,6 +22,10 @@ Route::get('bikes', 'BikeController@filter');
 Route::get('bikes/{id}', 'BikeController@show');
 Route::put('bikes/{id}', 'BikeController@update');
 Route::post('bikes', 'BikeController@store');
+Route::get('models', 'BikeController@getBikeModels');
+//bikeGraph
+Route::get('bikegraph', 'BikeController@getBikeGraph');
+
 //Order
 Route::get('orders', 'OrderController@index');
 Route::get('orders/{id}', 'OrderController@show');

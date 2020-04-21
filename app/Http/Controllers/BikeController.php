@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Bike;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -85,5 +86,16 @@ class BikeController extends Controller
             $bike->save();
             return response()->json($bike, Response::HTTP_CREATED);
         }
+    }
+
+    public function getBikeGraph(){
+        return Bike::select(['model', 'size', DB::raw("COUNT(*) as count")])->groupBy('model', 'size')->get();
+    }
+
+    public function getBikeModels(){
+        return Bike::select('model')->distinct()->get();
+
+        // return number of models in Bike model
+//        $reserve = Bike::all()->groupBy('model')->count();
     }
 }
