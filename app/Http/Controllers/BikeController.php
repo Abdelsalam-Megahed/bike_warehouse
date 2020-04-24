@@ -9,14 +9,10 @@ use Symfony\Component\HttpFoundation\Response;
 
 class BikeController extends Controller
 {
-
     public function index()
     {
         $bikes = Bike::all();
         return $bikes;
-
-//        $bikes = Bike::with('orders')->get();
-//        return $bikes->orders;
     }
 
     public function show($id){
@@ -26,28 +22,6 @@ class BikeController extends Controller
         }else
             $bike->order;
             return response()->json($bike, Response::HTTP_OK);
-    }
-
-    public function filter(Request $request){
-        $bikes = Bike::whereNotNull('id');
-
-        if ($request->has('size')) {
-            $bikes = $bikes->where('size', $request->size);
-        }
-
-        if ($request->has('model')) {
-            $bikes = $bikes->where('model', $request->model);
-        }
-
-        if ($request->has('color')) {
-            $bikes = $bikes->where('color', $request->color);
-        }
-
-        if ($request->has('status')) {
-            $bikes = $bikes->where('status', $request->status);
-        }
-
-        return $bikes->get();
     }
 
     public function update(Request $request, $id){
@@ -96,6 +70,9 @@ class BikeController extends Controller
         return Bike::select('model')->distinct()->get();
 
         // return number of models in Bike model
-//        $reserve = Bike::all()->groupBy('model')->count();
+        // $reserve = Bike::all()->groupBy('model')->count();
+    }
+    public function getBikeSizes(){
+        return Bike::select('size')->distinct()->get();
     }
 }

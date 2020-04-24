@@ -9,7 +9,7 @@ class Warehouse extends Model
 
     public function bikes()
     {
-        return $this->hasMany('App/Bike');
+        return $this->hasMany('App\Models\Bike');
     }
 
     public function extras(){

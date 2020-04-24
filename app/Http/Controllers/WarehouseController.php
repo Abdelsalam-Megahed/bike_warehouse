@@ -9,10 +9,17 @@ use Illuminate\Http\Request;
 
 class WarehouseController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $warehouses = Warehouse::with('extras')->get();
-        return $warehouses;
+        $warehouses = WareHouse::with(['bikes' => function($query) use ($request){
+                if ($request->filled('model'))
+                     $query->where('model', $request->model);
+
+                if ($request->filled('size'))
+                      $query->where('size', $request->size);
+       }]);
+//        $warehouses = Warehouse::with('extras')->get();
+        return $warehouses->get();
     }
 
     public function show($id){
