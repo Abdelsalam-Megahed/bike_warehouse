@@ -18,7 +18,6 @@ Route::delete('warehouses/{id}', 'WarehouseController@delete');
 
 //Bike
 Route::get('bikes', 'BikeController@index');
-Route::get('bikes', 'BikeController@filter');
 Route::get('bikes/{id}', 'BikeController@show');
 Route::put('bikes/{id}', 'BikeController@update');
 Route::post('bikes', 'BikeController@store');

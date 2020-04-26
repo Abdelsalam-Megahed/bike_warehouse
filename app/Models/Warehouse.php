@@ -9,7 +9,7 @@ class Warehouse extends Model
 
     public function bikes()
     {
-        return $this->hasMany('App\Models\Bike');
+        return $this->hasMany('App\Models\Bike')->orderBy('updated_at', 'DESC');;
     }
 
     public function extras(){

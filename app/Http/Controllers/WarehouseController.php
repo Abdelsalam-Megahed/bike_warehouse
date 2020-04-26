@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Bike;
 use App\Models\Warehouse;
 
 use Illuminate\Support\Facades\Validator;
@@ -11,14 +12,16 @@ class WarehouseController extends Controller
 {
     public function index(Request $request)
     {
-        $warehouses = WareHouse::with(['bikes' => function($query) use ($request){
-                if ($request->filled('model'))
+        $warehouses = WareHouse::with(['bikes.order', 'bikes' => function($query) use ($request)
+        {
+            if ($request->filled('model'))
                      $query->where('model', $request->model);
 
                 if ($request->filled('size'))
                       $query->where('size', $request->size);
-       }]);
-//        $warehouses = Warehouse::with('extras')->get();
+       }
+       ]);
+
         return $warehouses->get();
     }
 
