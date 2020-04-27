@@ -1,0 +1,95 @@
+.filters{
+    grid-column: center-start / span 3;
+    display: flex;
+
+    &__sizes{
+        margin-left: 2rem;
+        border: solid 1px $borderGrey;
+        border-radius: 2px;
+
+         a:hover{
+            background-color: $borderGrey;
+          }
+          
+        .button{
+        text-decoration: none;
+        color: $blackDefault;
+        padding: 0 1.5rem;
+        border-right: solid 1px $borderGrey;
+        }
+    }
+
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        // overflow: hidden;
+      }
+      
+      li {
+        float: left;
+      }
+
+      .dropbtn{
+        border: solid 1px $borderGrey;
+        border-radius: 2px;
+      }
+      
+      li a, .dropbtn {
+        display: inline-block;
+        color: $blackDefault;
+        text-align: center;
+        padding: 7px 8px;
+        text-decoration: none;
+      }
+      
+      li a:hover, .dropdown:hover .dropbtn {
+        background-color: $borderGrey;
+      }
+
+      li a{
+        border-bottom: solid 1px $borderGrey;
+      }
+      
+      li.dropdown {
+        display: inline-block;
+      }
+      
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: $whiteDefault;
+        min-width: 16rem;
+      }
+      
+      .dropdown-content a {
+        text-decoration: none;
+        display: flex;
+        text-align: left;
+        p{
+            padding-left: 1rem;
+        }
+      }
+            
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+
+      img{
+        width: 17%;
+    }
+    
+      //The down arrow//
+      i {
+        border: solid $blackDefault;
+        border-width: 0 2px 2px 0;
+        display: inline-block;
+        padding: 2px;
+        margin-left: 5.5rem;
+      }
+
+      .down {
+        transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
+      }
+    }

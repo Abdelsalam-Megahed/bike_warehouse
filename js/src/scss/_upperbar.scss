@@ -1,0 +1,25 @@
+.upperbar{
+    background-color: $whiteDefault;
+    grid-column: full-start / full-end;
+
+    display: flex;
+    justify-content: space-between;
+    border: solid 1px $borderGrey;
+    // box-shadow: inset 0 0 10px 0 $borderGrey;
+    
+    p{
+        width: 360px;
+        height: 32px;
+        font-family: OpenSans;
+        font-size: 24px;
+        // font-weight: 600;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.33;
+        letter-spacing: -0.3px;
+    }
+
+    img{
+        width: 85%;
+    }
+}

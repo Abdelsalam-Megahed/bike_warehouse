@@ -1,0 +1,41 @@
+$color-primary: #c69963;
+$color-primary-dark: #B28451;
+
+.btn{
+    background-color: $color-primary;
+    color:#fff;
+    border: none;
+    border-radius: 0;
+    font-family: $mainFont;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    margin: 1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+
+    &:hover{
+        background-color: $color-primary-dark;
+    }
+}
+
+.txt{
+    font-family: OpenSans;
+    font-size: 16px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.5;
+    letter-spacing: 0.2px;
+}
+
+.light-txt{
+
+    font-family: OpenSans;
+    font-size: 13px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.14;
+    letter-spacing: normal;
+    color: $mediumGrey;
+}

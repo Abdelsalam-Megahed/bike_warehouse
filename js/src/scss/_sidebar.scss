@@ -1,0 +1,39 @@
+.sidebar{
+    background-color: $blackDefault;
+    grid-column: sidebar-start / sidebar-end;
+    grid-row: 1 / -1;
+
+    img{
+        width: 15%;
+        display: block;
+        margin: 3rem auto;
+    }
+}
+
+.nav {
+    list-style: none;
+
+    display: grid;
+    grid-template-rows: repeat( repeat(3, auto-fit));
+    grid-gap: 2rem;
+    align-items: center;
+
+    &__link:link,
+    &__link:visited {
+        font-size: 1.4rem;
+        color: $whiteDefault;
+        text-decoration: none;
+        font-family: $mainFont;
+        text-transform: uppercase;
+        text-align: center;
+        padding: 1.5rem;
+        display: block;
+        transition: all .2s;
+    }
+
+    &__link:hover,
+    &__link:active {
+        background-color: rgba($whiteDefault, .05);
+        transform: translateY(-3px);
+    }
+}

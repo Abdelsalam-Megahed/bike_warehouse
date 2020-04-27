@@ -1,0 +1,39 @@
+//Colors
+$borderGrey: #ebedf8;
+$blackDefault: #202731;
+$greenDefault: #186236;
+$darkGrey: #777c84;
+$background: #fafbfc;
+$mediumGrey: #8a93a0;
+$whiteDefault: #fff;
+$blackColor:#000;
+//Fonts
+$mainFont: 'OpenSans';
+ 
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+
+.container{
+    display: grid;
+    grid-template-rows: 7vh 25vh  8rem min-content;
+    grid-template-columns: [sidebar-start] minmax(min-content, 24rem) [sidebar-end full-start] 
+    minmax(3rem, min-content) [center-start]
+    repeat(5, [col-start] minmax(min-content, 20rem) [col-end]) [center-end] 
+    minmax(3rem, 1fr) [full-end];
+
+    & > *{
+        padding: 2rem;
+        font-size: 3rem;
+        font-family: $mainFont;
+    }
+}
