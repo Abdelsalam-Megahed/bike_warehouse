@@ -1,5 +1,5 @@
 import React from 'react';
-import { fetchItems, fetchModels, fetchSizes } from './apiCore';
+import { fetchWarehouses, fetchModels, fetchSizes } from './components/api/apiCore';
 import WarehouseDashboard from './components/WarehouseDashboard';
 import Sidebar from './components/Sidebar';
 import Upperbar from './components/Upperbar';
@@ -11,14 +11,12 @@ class App extends React.Component {
 
   state = {
     warehouses: [],
-    sizeFilter:"",
-    modelFilter:"",
     bikes:[],
     models:[],
     sizes: [],
     status: ['In transit', 'Arrived'],
-    isFetching: false,
-    // isAddItemModalVisisble: false,
+    sizeFilter:"",
+    modelFilter:""
   }
 
   componentDidMount () {
@@ -29,7 +27,7 @@ class App extends React.Component {
 
   getAllWarehouses = async (sizeFilter, modelFilter) => {
     try{  
-      const results = await fetchItems(sizeFilter || "", modelFilter || "");  
+      const results = await fetchWarehouses(sizeFilter || "", modelFilter || "");  
       const warehouses = await results.map(result => result);
       if(warehouses !== null){
         this.setState({warehouses})        

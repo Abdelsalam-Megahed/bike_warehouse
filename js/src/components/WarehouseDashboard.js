@@ -3,7 +3,7 @@ import Bike from './Bike';
 
 const WarehouseDashboard = (props) => {
 
-  const CountBikeStatus = (bikes, filter) => 
+  const countBikeStatus = (bikes, filter) => 
   {    
        let count = 0;
        bikes.forEach(bike => {
@@ -25,18 +25,18 @@ const WarehouseDashboard = (props) => {
                        </div>
    
                        {props.status.map((status, index) => 
-                         <div key={index}>
-                         <div className="warehouses__filter warehouses__flex txt">
-                           <p className="txt">{status}</p> 
-                           <p className="txt">{CountBikeStatus(warehouse.bikes, status)} </p>  
-                        </div>
-                     
-                     {warehouse && warehouse.bikes.filter(bike => bike.status === status)
-                       .map((bike) => 
-                       
-                         <Bike bike={bike} />
-                     )}
-                     </div> 
+                        <div key={index}>
+                            <div className="warehouses__filter warehouses__flex txt">
+                              <p className="txt">{status}</p> 
+                              <p className="txt">{countBikeStatus(warehouse.bikes, status)} </p>  
+                            </div>
+                        
+                            {warehouse && warehouse.bikes.filter(bike => bike.status === status)
+                            .map((bike) => 
+                          
+                             <Bike bike={bike} />
+                             )}
+                        </div> 
                          )}
                      </ul>
                    )} 
