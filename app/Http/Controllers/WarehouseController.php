@@ -59,7 +59,7 @@ class WarehouseController extends Controller
         return $warehouse;
     }
 
-    public function delete($id)
+    public function destroy($id)
     {
         $warehouse = Warehouse::findOrFail($id);
 
@@ -71,7 +71,7 @@ class WarehouseController extends Controller
 
     public function validateRequest(Request $request){
         $rules = [
-            'name' => 'required|min:2|unique:warehouses',
+            'name' => 'required|min:2|string|unique:warehouses',
         ];
 
         $validator = Validator::make($request->all(), $rules);

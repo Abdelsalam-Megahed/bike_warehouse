@@ -5,7 +5,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Bike extends Model
 {
-    protected $fillable = ['warehouse_id', 'order_id'];
+    protected $fillable = ['warehouse_id'];
 
 
     public function getCreatedAtAttribute($value)

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Order;
+use Illuminate\Support\Facades\Validator;
 use Symfony\Component\HttpFoundation\Response;
 
 
@@ -28,8 +29,20 @@ class OrderController extends Controller
         $order->customer_phone = $request->input('customer_phone');
         $order->customer_address = $request->input('customer_address');
         $order->bike_id = $request->input('bike_id');
-        $order->save();
 
+        $rules = [
+            'customer_name' => 'required|string|min:3|max:20',
+            'customer_email' => 'required|email',
+            'customer_phone' => 'required',
+            'customer_address' => 'required|string',
+            'bike_id' =>'required|exists:bikes,id'
+        ];
+        $validator = Validator::make($request->all(), $rules);
+        if($validator->fails()){
+            return response()->json(["error" => $validator->errors()], Response::HTTP_BAD_REQUEST);
+        }
+
+        $order->save();
         return response()->json($order, Response::HTTP_CREATED);
     }
 

@@ -24,13 +24,6 @@ class BikeController extends Controller
             return response()->json($bike, Response::HTTP_OK);
     }
 
-    public function update(Request $request, $id){
-        $bike = Bike::findOrFail($id);
-        $bike->update($request->all());
-
-        return response()->json($bike, 200);
-    }
-
     public function store(Request $request){
         $l_number = "L-". rand(15,10000);
         $frame_number = "FRA". rand(15,10000);
@@ -49,16 +42,44 @@ class BikeController extends Controller
             $bike->width = $request->input('width');
             $bike->warehouse_id = $request->input('warehouse_id');
 
-        $validator = Validator::make($request->all(), [
-            'warehouse_id', 'model', 'size', 'weight', 'status', 'length',
-            'height', 'width', 'sku_code' => 'required'
-        ]);
+        $rules = [
+            'model' => 'required|in:Curt Belt,Curt,Stout Green,Stout Grey,Stellar Red,Stellar Blue',
+            'sku_code' => 'required|string',
+            'status' => 'required|in:Arrived,In transit',
+            'size' => 'required|in:S,M,L',
+            'weight' => 'required|Numeric',
+            'length', 'height', 'width' => 'required|integer',
+            'warehouse_id' =>'required|exists:warehouses,id'
+        ];
+        $validator = Validator::make($request->all(), $rules);
+        if($validator->fails()){
+            return response()->json(["error" => $validator->errors()], Response::HTTP_BAD_REQUEST);
+        }
 
-        if ($validator->fails()) {
-            return response()->json(["error" => "Please enter valid data"]);
-        }else{
-            $bike->save();
-            return response()->json($bike, Response::HTTP_CREATED);
+        $bike->save();
+        return response()->json($bike, Response::HTTP_CREATED);
+        }
+
+    public function update(Request $request, $id){
+        $rules = [
+            'warehouse_id' =>'required|exists:warehouses,id'
+        ];
+        $validator = Validator::make($request->all(), $rules);
+        if($validator->fails()){
+            return response()->json(["error" => $validator->errors()], Response::HTTP_BAD_REQUEST);
+        }
+
+        $bike = Bike::findOrFail($id);
+        $bike->update($request->all());
+        return response()->json($bike, 200);
+    }
+
+    public function destroy($id){
+        $bike = Bike::findOrFail($id);
+
+        if(!is_null($bike)){
+            $bike->delete();
+            return response()->json(["response" => "Bike has been deleted"], Response::HTTP_ACCEPTED);
         }
     }
 
@@ -68,10 +89,8 @@ class BikeController extends Controller
 
     public function getBikeModels(){
         return Bike::select('model')->distinct()->get();
-
-        // return number of models in Bike model
-        // $reserve = Bike::all()->groupBy('model')->count();
     }
+
     public function getBikeSizes(){
         return Bike::select('size')->distinct()->get();
     }

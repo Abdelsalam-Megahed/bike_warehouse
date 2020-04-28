@@ -7,12 +7,12 @@ export const fetchWarehouses = (size, model) =>
     .catch(err => console.log(err));
 
 export const fetchModels = () => 
-    fetch(`${API}/models`)
+    fetch(`${API}/bike/models`)
     .then(response => response.json())
     .catch(err => console.log(err));
 
 export const fetchSizes = () => 
-    fetch(`${API}/sizes`)
+    fetch(`${API}/bike/sizes`)
     .then(response => response.json())
     .catch(err => console.log(err));
 
