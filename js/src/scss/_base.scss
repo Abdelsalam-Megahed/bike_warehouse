@@ -7,9 +7,11 @@ $background: #fafbfc;
 $mediumGrey: #8a93a0;
 $whiteDefault: #fff;
 $blackColor:#000;
+$buttonHoverColor: #B28451;
+
 //Fonts
 $mainFont: 'OpenSans';
- 
+
 *,
 *::before,
 *::after {
@@ -34,6 +36,5 @@ html {
     & > *{
         padding: 2rem;
         font-size: 3rem;
-        font-family: $mainFont;
     }
 }

@@ -3,6 +3,9 @@
     margin-right: 3rem;
     margin-bottom: 5rem;
 
+  
+    
+
     &__flex{
         display: flex;
         justify-content: space-between;
@@ -27,10 +30,6 @@
         letter-spacing: 0.2px;
         text-align: right;
         color: $blackDefault;
-    }
-
-    &__img{
-        // width: 20%;
     }
 
     &__grid-container{

@@ -1,11 +1,5 @@
-$color-primary: #c69963;
-$color-primary-dark: #B28451;
-
 .btn{
-    background-color: $color-primary;
-    color:#fff;
-    border: none;
-    border-radius: 0;
+    color:$whiteDefault;
     font-family: $mainFont;
     font-size: 1.5rem;
     text-transform: uppercase;
@@ -14,7 +8,7 @@ $color-primary-dark: #B28451;
     transition: all 0.2s;
 
     &:hover{
-        background-color: $color-primary-dark;
+        background-color: $buttonHoverColor;
     }
 }
 
