@@ -28,7 +28,7 @@ Now the back-end side should be up and running on http://127.0.0.1:8000/.
 
 
 For the front-end:
-Go to js directory from terminal and run:
+go to js directory from terminal and run:
 > $ yarn install / npm install .
 >
 >Then
